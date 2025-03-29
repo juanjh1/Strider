@@ -1,5 +1,5 @@
 from config.extensions import db  
-from sqlalchemy import DateTime, ForeignKey
+from sqlalchemy import DateTime, ForeignKey, Index
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Enum as SQLAlchemyEnum
 from enum import Enum
@@ -85,6 +85,10 @@ class User(db.Model):
     
     def is_admin(self) -> bool:
         return any(role.name == "admin" for role in self.roles)
+    
+    __table_args__ = (  
+        Index("idx_username", username),  
+    )
 
 
 
