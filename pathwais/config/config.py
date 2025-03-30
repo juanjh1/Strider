@@ -2,6 +2,21 @@ from flask import Flask
 from datetime import timedelta
 from flask_jwt_extended import JWTManager
 from config.extensions import db  
+import os
+from dotenv import load_dotenv
+
+
+#-----------------#
+#   Constants
+#-----------------#
+
+R2_ENDPOINT = os.getenv("R2_ENDPOINT")
+R2_ACCESS_KEY_ID = os.getenv("R2_ACCESS_KEY_ID")
+R2_SECRET_ACCESS_KEY = os.getenv("R2_ACCESS_KEY")
+R2_BUCKET_NAME = os.getenv("R2_BUCKET_NAME")
+R2_TOKEN_VALUE = os.getenv("R2_TOKEN_VALUE ")
+
+load_dotenv()
 
 
 def create_app():

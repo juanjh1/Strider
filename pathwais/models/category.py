@@ -38,6 +38,6 @@ class Category (db.Model):
     )
 
     __table_args__ = (
-        Index("idx_category_slug", slug),  # Búsquedas por slug
-        Index("idx_category_parent", parent_id),  # Consultas jerárquicas rápidas
+        Index("idx_category_slug", slug),  
+        Index("idx_category_parent", parent_id),  
     )

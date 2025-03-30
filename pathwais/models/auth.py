@@ -89,8 +89,9 @@ class User(db.Model):
     __table_args__ = (  
         Index("idx_username", username),  
     )
-
-
+    @staticmethod
+    def filterByEmail(email):
+        return  db.session.execute(db.select(User).filter_by(email=email)).scalar_one_or_none() 
 
 class UserRole(db.Model):
     __tablename__ = "user_role"
